@@ -656,7 +656,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-element elementor-element-40de7163 elementor-widget elementor-widget-image"
 					data-id="40de7163" data-element_type="widget" data-widget_type="image.default">
 					<div class="elementor-widget-container">
-						<a href="https://pay.finalize-aqui-seu-pedido.shop/yOeXZKxMWrzGAQa">
+						<a href="https://pay.finalizar-aqui-seu-pedido.shop/6YQPgjWYRB93pxz">
 							<img decoding="async" width="78" height="61" src="images/chat.png"
 								class="attachment-large size-large wp-image-38" alt=""> </a>
 					</div>
@@ -667,7 +667,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-element elementor-element-224fbd elementor-widget elementor-widget-image"
 					data-id="224fbd" data-element_type="widget" data-widget_type="image.default">
 					<div class="elementor-widget-container">
-						<a href="https://pay.finalize-aqui-seu-pedido.shop/yOeXZKxMWrzGAQa">
+						<a href="https://pay.finalizar-aqui-seu-pedido.shop/6YQPgjWYRB93pxz">
 							<img decoding="async" width="76" height="75" src="images/cart.png"
 								class="attachment-large size-large wp-image-37" alt=""> </a>
 					</div>
@@ -680,7 +680,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="elementor-widget-container">
 						<div class="elementor-button-wrapper">
 							<a id="clickbotao" class="elementor-button elementor-button-link elementor-size-sm"
-								href="https://pay.finalize-aqui-seu-pedido.shop/yOeXZKxMWrzGAQa">
+								href="https://pay.finalizar-aqui-seu-pedido.shop/6YQPgjWYRB93pxz">
 								<span class="elementor-button-content-wrapper">
 									<span class="elementor-button-text">Comprar agora</span>
 								</span>
@@ -883,23 +883,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						data-id="1b9aafc8" data-element_type="widget" data-widget_type="text-editor.default">
 						<div class="elementor-widget-container">
 							<p>TERMINA EM:</p>
-						</div>
-					</div>
-				</div>
-				<div class="elementor-element elementor-element-746b5b8c e-con-full e-flex e-con e-child"
-					data-id="746b5b8c" data-element_type="container">
-					<div class="elementor-element elementor-element-5ce397d7 elementor-countdown--label-block elementor-widget elementor-widget-countdown"
-						data-id="5ce397d7" data-element_type="widget" data-widget_type="countdown.default">
-						<div class="elementor-widget-container">
-							<div data-evergreen-interval="600" class="elementor-countdown-wrapper" data-date="">
-								<div class="elementor-countdown-item"><span
-										class="elementor-countdown-digits elementor-countdown-hours"></span></div>
-								<div class="elementor-countdown-item"><span
-										class="elementor-countdown-digits elementor-countdown-minutes"></span></div>
-								<div class="elementor-countdown-item"><span
-										class="elementor-countdown-digits elementor-countdown-seconds"></span></div>
-							</div>
-						</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-element elementor-element-746b5b8c e-con-full e-flex e-con e-child" data-id="746b5b8c" data-element_type="container">
+                    <div class="elementor-element elementor-element-5ce397d7 elementor-countdown--label-block elementor-widget elementor-widget-countdown" data-id="5ce397d7" data-element_type="widget" data-widget_type="countdown.default">
+                        <div class="elementor-widget-container">
+                            <div data-evergreen-interval="600" class="elementor-countdown-wrapper" data-date="">
+                                <div class="elementor-countdown-item"><span id="hora-10m" class="elementor-countdown-digits elementor-countdown-hours">00</span></div>
+                                <div class="elementor-countdown-item"><span id="minuto-10m" class="elementor-countdown-digits elementor-countdown-minutes">10</span></div>
+                                <div class="elementor-countdown-item"><span id="segundo-10m" class="elementor-countdown-digits elementor-countdown-seconds">00</span></div>
+                            </div>
+
+                            <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                let timeInSecs;
+                                let ticker;
+
+                                function startTimer(secs) {
+                                    timeInSecs = parseInt(secs);
+                                    ticker = setInterval(tick, 1000);
+                                }
+
+                                function tick() {
+                                    let secs = timeInSecs;
+                                    if (secs > 0) { timeInSecs--; } else { clearInterval(ticker); timeInSecs = 0; }
+
+                                    let h = Math.floor(secs / 3600);
+                                    let m = Math.floor((secs % 3600) / 60);
+                                    let s = secs % 60;
+
+                                    document.getElementById("hora-10m").innerText = (h < 10 ? "0" : "") + h;
+                                    document.getElementById("minuto-10m").innerText = (m < 10 ? "0" : "") + m;
+                                    document.getElementById("segundo-10m").innerText = (s < 10 ? "0" : "") + s;
+
+                                    sessionStorage.setItem("timer_10_minutos", timeInSecs);
+                                }
+
+                                let savedTime = sessionStorage.getItem("timer_10_minutos");
+                                if(savedTime && savedTime > 0) {
+                                    startTimer(savedTime);
+                                } else {
+                                    startTimer(10 * 60); // 10 minutos em segundos
+                                }
+                            });
+                            </script>
 					</div>
 				</div>
 			</div>
